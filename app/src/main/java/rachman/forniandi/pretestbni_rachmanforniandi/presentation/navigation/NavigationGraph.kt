@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import rachman.forniandi.pretestbni_rachmanforniandi.presentation.gathering.GatheringScreen
 import rachman.forniandi.pretestbni_rachmanforniandi.presentation.home.HomeScreen
 import rachman.forniandi.pretestbni_rachmanforniandi.presentation.receipt.ReceiptScreen
+import rachman.forniandi.pretestbni_rachmanforniandi.presentation.transaction.GatheringScreen
 
 @Composable
 fun NavigationGraph() {

@@ -7,6 +7,7 @@ import androidx.core.content.FileProvider
 import rachman.forniandi.pretestbni_rachmanforniandi.domain.model.Transaction
 import rachman.forniandi.pretestbni_rachmanforniandi.domain.model.TransactionStatus
 import rachman.forniandi.pretestbni_rachmanforniandi.domain.model.TransactionType
+import rachman.forniandi.pretestbni_rachmanforniandi.utils.CurrencyUtils.formatCurrency
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -100,7 +101,7 @@ object ReceiptHelper {
     }
 
 
-    private fun formatCurrency(amount: Double): String {
+    /*private fun formatCurrency(amount: Double): String {
         return String.format("%,.0f", amount).replace(',', '.')
-    }
+    }*/
 }

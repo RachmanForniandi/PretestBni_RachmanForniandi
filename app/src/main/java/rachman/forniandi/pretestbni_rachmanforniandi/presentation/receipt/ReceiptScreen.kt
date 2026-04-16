@@ -47,7 +47,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import rachman.forniandi.pretestbni_rachmanforniandi.domain.model.Transaction
 import rachman.forniandi.pretestbni_rachmanforniandi.domain.model.TransactionStatus
-import rachman.forniandi.pretestbni_rachmanforniandi.presentation.home.formatCurrency
+import rachman.forniandi.pretestbni_rachmanforniandi.utils.CurrencyUtils.formatCurrency
 import rachman.forniandi.pretestbni_rachmanforniandi.utils.ReceiptHelper
 import rachman.forniandi.pretestbni_rachmanforniandi.utils.ReceiptHelper.getStatusTitle
 import rachman.forniandi.pretestbni_rachmanforniandi.utils.ReceiptHelper.formatDateTime

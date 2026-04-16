@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import rachman.forniandi.pretestbni_rachmanforniandi.utils.CurrencyUtils.formatCurrency
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -218,41 +219,14 @@ fun BarChartSection(financialSummary: FinancialSummary) {
             text = "Persentase",
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
-            modifier = Modifier.padding(bottom = 12.dp)
+            modifier = Modifier.padding(bottom = 16.dp)
         )
 
+        // Gunakan LegendItem
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            // Income Bar
-            val incomeWeight = financialSummary.incomePercentage.coerceAtLeast(0.001f)
-            Box(
-                modifier = Modifier
-                    .weight(incomeWeight)
-                    .fillMaxHeight()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color(0xFF4CAF50))
-            )
-
-            // Expense Bar
-            val expenseWeight = financialSummary.expensePercentage.coerceAtLeast(0.001f)
-            Box(
-                modifier = Modifier
-                    .weight(expenseWeight)
-                    .fillMaxHeight()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color(0xFFF44336))
-            )
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // Legend
-        Row(
-            modifier = Modifier.fillMaxWidth(),
+                .padding(bottom = 16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             LegendItem(
@@ -267,6 +241,47 @@ fun BarChartSection(financialSummary: FinancialSummary) {
                 percentage = financialSummary.expensePercentage
             )
         }
+
+        // Bar Chart Vertikal
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(180.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Bottom
+        ) {
+            // Income Bar
+            Box(
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(
+                        if (financialSummary.incomePercentage > 0f) {
+                            (160.dp * financialSummary.incomePercentage).coerceAtLeast(4.dp)
+                        } else {
+                            4.dp
+                        }
+                    )
+                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                    .background(Color(0xFF4CAF50))
+            )
+
+            Spacer(modifier = Modifier.width(32.dp))
+
+            // Expense Bar
+            Box(
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(
+                        if (financialSummary.expensePercentage > 0f) {
+                            (160.dp * financialSummary.expensePercentage).coerceAtLeast(4.dp)
+                        } else {
+                            4.dp
+                        }
+                    )
+                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                    .background(Color(0xFFF44336))
+            )
+        }
     }
 }
 
@@ -274,25 +289,24 @@ fun BarChartSection(financialSummary: FinancialSummary) {
 fun LegendItem(color: Color, label: String, percentage: Float) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(6.dp)
     ) {
         Box(
             modifier = Modifier
-                .size(12.dp)
+                .size(10.dp)
                 .background(color, shape = RoundedCornerShape(2.dp))
         )
-        Column {
-            Text(
-                text = label,
-                fontSize = 12.sp,
-                color = Color.Gray
-            )
-            Text(
-                text = "${(percentage * 100).roundToInt()}%",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
+        Text(
+            text = label,
+            fontSize = 14.sp,
+            color = Color.Gray
+        )
+        Text(
+            text = "${(percentage * 100).roundToInt()}%",
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            color = color
+        )
     }
 }
 
@@ -444,7 +458,3 @@ fun ActionButtonsSection(
     }
 }
 
-// Helper function
-fun formatCurrency(amount: Double): String {
-    return String.format("%,.0f", amount).replace(',', '.')
-}

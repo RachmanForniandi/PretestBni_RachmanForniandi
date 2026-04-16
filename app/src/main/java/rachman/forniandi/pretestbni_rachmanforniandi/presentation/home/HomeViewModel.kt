@@ -26,7 +26,11 @@ class HomeViewModel @Inject constructor(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = FinancialSummary(0.0, 0.0, 0.0, 0f, 0f)
+            initialValue = FinancialSummary(0.0,
+                0.0,
+                0.0,
+                0.5f,
+                0.5f)
         )
 
     val filteredTransactions = _selectedTab.flatMapLatest { tab ->

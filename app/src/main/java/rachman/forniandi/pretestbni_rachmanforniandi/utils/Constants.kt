@@ -4,7 +4,7 @@ object Constants {
     // Base URL untuk API
     const val BASE_URL = " http://192.168.1.19:3001/" // Ganti dengan URL API Anda
 
-    /*// Local Keys
+    // Local Keys
     const val PREF_NAME = "transaction_app_pref"
     const val KEY_USER_ID = "user_id"
     const val KEY_IS_LOGGED_IN = "is_logged_in"
@@ -19,7 +19,7 @@ object Constants {
 
     // API Response Status
     const val STATUS_SUCCESS = "SUCCESS"
-    const val STATUS_FAILED = "FAILED"*/
+    const val STATUS_FAILED = "FAILED"
 
     // Database
     const val DATABASE_NAME = "transaction_database"
@@ -32,4 +32,6 @@ object Constants {
 
     // ReffId
     const val REFF_ID_LENGTH = 13
+
+
 }
