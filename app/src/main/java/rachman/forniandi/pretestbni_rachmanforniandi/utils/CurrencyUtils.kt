@@ -10,17 +10,13 @@ object CurrencyUtils {
         return "Rp${formatter.format(amount)}"
     }
 
-    fun formatRupiah(amount: Long): String {
-        return "Rp${formatter.format(amount)}"
-    }
+
 
     fun formatNumber(amount: Double): String {
         return formatter.format(amount)
     }
 
-    fun formatNumber(amount: Long): String {
-        return formatter.format(amount)
-    }
+
 
     fun formatCurrency(amount: Double): String {
         return CurrencyUtils.formatNumber(amount)

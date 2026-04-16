@@ -101,7 +101,4 @@ object ReceiptHelper {
     }
 
 
-    /*private fun formatCurrency(amount: Double): String {
-        return String.format("%,.0f", amount).replace(',', '.')
-    }*/
 }
