@@ -19,6 +19,6 @@ object CurrencyUtils {
 
 
     fun formatCurrency(amount: Double): String {
-        return CurrencyUtils.formatNumber(amount)
+        return formatNumber(amount)
     }
 }

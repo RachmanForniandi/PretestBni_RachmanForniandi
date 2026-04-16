@@ -4,6 +4,7 @@ package rachman.forniandi.pretestbni_rachmanforniandi.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -33,6 +34,7 @@ class HomeViewModel @Inject constructor(
                 0.5f)
         )
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val filteredTransactions = _selectedTab.flatMapLatest { tab ->
         when (tab) {
             "INCOME" -> repository.getIncomeTransactions(limit = 3)
@@ -48,11 +50,5 @@ class HomeViewModel @Inject constructor(
         _selectedTab.value = tab
     }
 
-    fun refreshData() {
-        viewModelScope.launch {
-            _isLoading.value = true
-            delay(500)
-            _isLoading.value = false
-        }
-    }
+
 }
