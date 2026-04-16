@@ -228,18 +228,20 @@ fun BarChartSection(financialSummary: FinancialSummary) {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             // Income Bar
+            val incomeWeight = financialSummary.incomePercentage.coerceAtLeast(0.001f)
             Box(
                 modifier = Modifier
-                    .weight(financialSummary.incomePercentage)
+                    .weight(incomeWeight)
                     .fillMaxHeight()
                     .clip(RoundedCornerShape(8.dp))
                     .background(Color(0xFF4CAF50))
             )
 
             // Expense Bar
+            val expenseWeight = financialSummary.expensePercentage.coerceAtLeast(0.001f)
             Box(
                 modifier = Modifier
-                    .weight(financialSummary.expensePercentage)
+                    .weight(expenseWeight)
                     .fillMaxHeight()
                     .clip(RoundedCornerShape(8.dp))
                     .background(Color(0xFFF44336))
