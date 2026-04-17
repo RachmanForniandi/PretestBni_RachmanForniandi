@@ -54,6 +54,17 @@ fun HomeScreen(
                 )
             )
         },
+        bottomBar = {
+            ActionButtonsSection(
+                onTransferClick = {
+                    navController.navigate("transaction/TRANSFER")
+                },
+                onTopupClick = {
+                    navController.navigate("transaction/TOPUP")
+                }
+            )
+        },
+
         containerColor = Color.White
     ) { paddingValues ->
         LazyColumn(
@@ -105,16 +116,8 @@ fun HomeScreen(
                 }
             }
 
-            // Action Buttons
             item {
-                ActionButtonsSection(
-                    onTransferClick = {
-                        navController.navigate("transaction/TRANSFER")
-                    },
-                    onTopupClick = {
-                        navController.navigate("transaction/TOPUP")
-                    }
-                )
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }
@@ -411,49 +414,54 @@ fun TransactionListItem(
     }
 }
 
-@Composable
-fun ActionButtonsSection(
-    onTransferClick: () -> Unit,
-    onTopupClick: () -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    @Composable
+    fun ActionButtonsSection(
+        onTransferClick: () -> Unit,
+        onTopupClick: () -> Unit
+    ) {    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shadowElevation = 8.dp,
+        color = Color.White
     ) {
-        Button(
-            onClick = onTransferClick,
+        Row(
             modifier = Modifier
-                .weight(1f)
-                .height(48.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF2196F3)
-            ),
-            shape = RoundedCornerShape(8.dp)
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Text(
-                text = "Transfer Saldo",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
+            Button(
+                onClick = onTransferClick,
+                modifier = Modifier
+                    .weight(1f)
+                    .height(48.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF2196F3)
+                ),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = "Transfer Saldo",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
 
-        Button(
-            onClick = onTopupClick,
-            modifier = Modifier
-                .weight(1f)
-                .height(48.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF4CAF50)
-            ),
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Text(
-                text = "Topup Saldo",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
-            )
+            Button(
+                onClick = onTopupClick,
+                modifier = Modifier
+                    .weight(1f)
+                    .height(48.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF4CAF50)
+                ),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = "Topup Saldo",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
         }
     }
 }
